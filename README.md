@@ -1,75 +1,76 @@
-# 🤖 Chatbot com LLM (Meta-Llama 3.1)
+# 📜 Constituição Portuguesa – Assistente Jurídico
 
-Este projeto é uma aplicação web interativa que permite ao utilizador conversar com uma LLM (Large Language Model) em português. Utiliza o modelo **Meta-Llama-3.1-8B-Instruct-Turbo** através da API da [Together](https://api.together.xyz/), com backend em Flask e frontend moderno com Bootstrap.
+Este projeto é um chatbot com interface web que responde a perguntas sobre a **Constituição da República Portuguesa**, utilizando **RAG (Retrieval-Augmented Generation)** com embeddings e um modelo LLM da Groq (LLaMA 4).
 
----
+## 🧠 Tecnologias Utilizadas
 
-## 🧩 Tecnologias utilizadas
+- **Python + Flask** – Backend da API
+- **SentenceTransformers + FAISS** – Indexação semântica do conteúdo da constituição
+- **Groq API (LLaMA 4)** – LLM usado para gerar respostas
+- **HTML + CSS + JS (Vanilla + Bootstrap)** – Interface moderna e responsiva
+- **pdfplumber** – Extração do conteúdo do PDF
+- **dotenv** – Gestão segura de variáveis como a API Key
 
-* Python 3 + Flask
-* API Together (LLM)
-* HTML, CSS, JavaScript (Vanilla)
-* Bootstrap 5
-* .env para variáveis sensíveis
+## 📁 Estrutura do Projeto
 
----
+```
+chatbot/
+├── backend/
+│   ├── app.py
+│   ├── embed_constituicao.py
+│   ├── database/
+│   │   ├── constituicao.pdf
+│   │   ├── faiss_index.idx
+│   │   ├── chunks.pkl
+│   │   └── texto_extraido.txt
+│   ├── templates/
+│   │   └── index.html
+│   ├── static/
+│   │   ├── style.css
+│   │   └── main.js
+│   └── .env
+├── README.md
+```
 
-## 🚀 Como executar localmente
+## ⚙️ Instalação
 
-### 1. Clonar o repositório
+1. Clone o repositório:
+```bash
+git clone https://github.com/...
+cd constituição-chatbot/backend
+```
 
-### 2. Instalar dependências
-
+2. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
 
-> ⚠️ O ficheiro `requirements.txt` deve conter:
->
-> ```
-> flask
-> python-dotenv
-> requests
-> ```
-
-### 3. Criar o ficheiro `.env`
-
-Cria um ficheiro `.env` na raiz do projeto com o seguinte conteúdo:
-
-```env
-TOGETHER_API_KEY=sua_chave_aqui
+3. Crie um arquivo `.env` com sua chave da API da Groq:
+```
+GROQ_API_KEY=gsk_XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-### 4. Iniciar o servidor
+4. Gere os embeddings do PDF:
+```bash
+python embed_constituicao.py
+```
 
+5. Inicie o servidor Flask:
 ```bash
 python app.py
 ```
 
-Acede ao navegador em `http://127.0.0.1:5000`
-
----
-
-## 🗂️ Estrutura de ficheiros
-
+6. Acesse a aplicação no navegador:
 ```
-.
-├── app.py               # Servidor Flask
-├── services.py          # Interação com a API LLM
-├── templates/
-│   └── index.html       # Interface web
-├── static/
-│   ├── main.js          # Lógica de frontend
-│   └── style.css        # Estilos visuais
-├── .env                 # Variáveis de ambiente 
-└── requirements.txt     # Dependências Python
+http://localhost:5000
 ```
-
----
 
 ## 💬 Funcionalidades
 
-* Interface moderna e responsiva
-* Comunicação em tempo real com LLM
-* Indicador de digitação animado
-* Separação visual entre mensagens do utilizador e do bot
+- Interface intuitiva e responsiva para perguntas jurídicas
+- Procura vetorial otimizada por FAISS
+- Integração com modelo LLaMA 4 via Groq API
+- Deteção de artigos específicos como.
+
+## ✅ Exemplo de Perguntas
+- `O que diz o Artigo 13.º?`
