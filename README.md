@@ -74,3 +74,6 @@ http://localhost:5000
 
 ## ✅ Exemplo de Perguntas
 - `O que diz o Artigo 13.º?`
+
+## Deploy do Frontend
+- https://aoop-cp3b.vercel.app/
